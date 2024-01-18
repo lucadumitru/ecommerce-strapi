@@ -1,4 +1,4 @@
-module.exports = [
+module.exports = ({ env }) => [
   "strapi::errors",
   {
     name: "strapi::security",
@@ -8,25 +8,12 @@ module.exports = [
         directives: {
           "connect-src": ["'self'", "https:"],
           "default-src": ["'self'"],
-          "img-src": [
-            "'self'",
-            "data:",
-            "blob:",
-            "market-assets.strapi.io",
-            process.env.SUPABASE_URL
-          ],
-          "media-src": [
-            "'self'",
-            "data:",
-            "blob:",
-            "market-assets.strapi.io",
-            process.env.SUPABASE_URL
-          ]
+          "img-src": ["'self'", "data:", "blob:", "market-assets.strapi.io", env("SUPABASE_URL")],
+          "media-src": ["'self'", "data:", "blob:", "market-assets.strapi.io", env("SUPABASE_URL")]
         }
       }
     }
   },
-  "strapi::security",
   "strapi::cors",
   "strapi::poweredBy",
   "strapi::logger",
