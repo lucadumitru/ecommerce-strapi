@@ -44,11 +44,11 @@ module.exports = ({ env }) => {
     postgres: {
       connection: {
         connectionString: env("DATABASE_URL"),
-        host: env("DATABASE_HOST", "db.apsnzwivcaimndsynxdq.supabase.co"),
+        host: process.env.DATABASE_HOST,
         port: env.int("DATABASE_PORT", 5432),
         database: env("DATABASE_NAME", "strapi"),
         user: env("DATABASE_USERNAME", "strapi"),
-        password: env("DATABASE_PASSWORD", "E8S78G(&hzArY.X"),
+        password: process.env.DATABASE_PASSWORD,
         ssl: env.bool("DATABASE_SSL", false) && {
           key: env("DATABASE_SSL_KEY", undefined),
           cert: env("DATABASE_SSL_CERT", undefined),
